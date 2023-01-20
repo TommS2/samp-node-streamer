@@ -1,0 +1,31 @@
+export declare class DynamicPickup {
+    private _id;
+    private _x;
+    private _y;
+    private _z;
+    private _modelid;
+    private _type;
+    private _worldid;
+    private _interiorid;
+    private _playerid;
+    private _streamdistance;
+    private _areaid;
+    private _priority;
+    static readonly STREAMER_PICKUP_SD = 200;
+    static readonly Pool: Array<number>;
+    constructor(modelid: number, type: number, x: number, y: number, z: number, worldid?: number, interiorid?: number, playerid?: number, streamdistance?: number, areaid?: number, priority?: number);
+    get id(): number;
+    get x(): number;
+    get y(): number;
+    get z(): number;
+    get modelid(): number;
+    get type(): number;
+    get worldid(): number;
+    get interiorid(): number;
+    get playerid(): number;
+    get streamdistance(): number;
+    get areaid(): number;
+    get prority(): number;
+    destroy(): void;
+    static IsValidDynamicPickup(pickupid: number): boolean;
+}

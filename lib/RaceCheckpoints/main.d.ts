@@ -1,0 +1,38 @@
+export declare class DynamicRaceCheckpoint {
+    static readonly Pool: Array<number>;
+    private _id;
+    private _x;
+    private _y;
+    private _z;
+    private _nextx;
+    private _nexty;
+    private _nextz;
+    private _size;
+    private _worldid;
+    private _interiorid;
+    private _playerid;
+    private _streamdistance;
+    private _areaid;
+    private _priority;
+    constructor(x: number, y: number, z: number, nextx: number, nexty: number, nextz: number, size: number, worldid: number, interiorid: number, playerid: number, streamdistance?: number, areaid?: number, priority?: number);
+    get id(): number;
+    get x(): number;
+    get y(): number;
+    get z(): number;
+    get nextx(): number;
+    get nexty(): number;
+    get nextz(): number;
+    get size(): number;
+    get worldid(): number;
+    get interiorid(): number;
+    get playerid(): number;
+    get streamdistance(): number;
+    get areaid(): number;
+    get prority(): number;
+    destroy(): void;
+    togglePlayer(playerid: number, toggle: 0 | 1): void;
+    isPlayerIn(playerid: number): any;
+    static GetPlayerVisibleDynamicRaceCP(playerid: number): any;
+    static TogglePlayerAllDynamicRaceCPs(playerid: number, toggle: 0 | 1): void;
+    static IsValidDynamicRaceCP(checkpointid: number): boolean;
+}

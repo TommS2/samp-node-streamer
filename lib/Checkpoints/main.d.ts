@@ -1,0 +1,32 @@
+export declare class DynamicCheckpoint {
+    static readonly Pool: Array<number>;
+    private _id;
+    private _x;
+    private _y;
+    private _z;
+    private _size;
+    private _worldid;
+    private _interiorid;
+    private _playerid;
+    private _streamdistance;
+    private _areaid;
+    private _priority;
+    constructor(x: number, y: number, z: number, size: number, worldid: number, interiorid: number, playerid: number, streamdistance?: number, areaid?: number, priority?: number);
+    get id(): number;
+    get x(): number;
+    get y(): number;
+    get z(): number;
+    get size(): number;
+    get worldid(): number;
+    get interiorid(): number;
+    get playerid(): number;
+    get streamdistance(): number;
+    get areaid(): number;
+    get prority(): number;
+    destroy(): void;
+    togglePlayer(playerid: number, toggle: 0 | 1): void;
+    isPlayerIn(playerid: number): any;
+    static GetPlayerVisibleDynamicCP(playerid: number): any;
+    static TogglePlayerAllDynamicCPs(playerid: number, toggle: 0 | 1): void;
+    static IsValidDynamicCP(checkpointid: number): boolean;
+}
