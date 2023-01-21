@@ -24,9 +24,9 @@ export declare class DynamicCheckpoint {
     get areaid(): number;
     get prority(): number;
     destroy(): void;
-    togglePlayer(playerid: number, toggle: 0 | 1): void;
+    togglePlayer(playerid: number, toggle: 0 | 1): false | undefined;
     isPlayerIn(playerid: number): any;
     static GetPlayerVisibleDynamicCP(playerid: number): any;
-    static TogglePlayerAllDynamicCPs(playerid: number, toggle: 0 | 1): void;
+    static TogglePlayerAllDynamicCPs(playerid: number, toggle: 0 | 1): false | undefined;
     static IsValidDynamicCP(checkpointid: number): boolean;
 }

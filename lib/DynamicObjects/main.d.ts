@@ -14,6 +14,7 @@ export declare class DynamicObject {
     private _drawdistance;
     private _areaid;
     private _priority;
+    private _vehicleid;
     static Pool: Array<number>;
     constructor(modelid: number, x: number, y: number, z: number, rx: number, ry: number, rz: number, worldid?: number, interiorid?: number, playerid?: number, streamdistance?: number, drawdistance?: number, areaid?: number, priority?: number);
     get id(): number;
@@ -31,6 +32,7 @@ export declare class DynamicObject {
     get drawdistance(): number;
     get areaid(): number;
     get priority(): number;
+    get vehicleid(): number;
     destroy(): void;
     getPosition(): any;
     setPosition(x: number, y: number, z: number): void;
@@ -39,11 +41,11 @@ export declare class DynamicObject {
     move(x: number, y: number, z: number, speed: number, rx?: number, ry?: number, rz?: number): void;
     stop(): void;
     isMoving(): any;
-    attachToCamera(playerid: number): void;
+    attachPlayerCameraTo(playerid: number): false | undefined;
     attachToObject(attachtoid: number, offsetx: number, offsety: number, offsetz: number, rx: number, ry: number, rz: number, syncrotation?: number): void;
-    attachToPlayer(playerid: number, offsetx: number, offsety: number, offsetz: number, rx: number, ry: number, rz: number): void;
-    attachToVehicle(vehicleid: number, offsetx: number, offsety: number, offsetz: number, rx: number, ry: number, rz: number): void;
-    setPlayerToEdit(playerid: number): void;
+    attachToPlayer(playerid: number, offsetx: number, offsety: number, offsetz: number, rx: number, ry: number, rz: number): false | undefined;
+    attachToVehicle(vehicleid: number, offsetx: number, offsety: number, offsetz: number, rx: number, ry: number, rz: number): false | undefined;
+    setPlayerToEdit(playerid: number): false | undefined;
     isMaterialUsed(materialindex: number): any;
     removeMaterial(materialindex: number): void;
     getMaterial(materialindex: number, modelid: number, txdname: string, texturename: string, materialcolor: number, maxtxdname?: number, maxtexturename?: number): any;

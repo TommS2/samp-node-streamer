@@ -30,9 +30,9 @@ export declare class DynamicRaceCheckpoint {
     get areaid(): number;
     get prority(): number;
     destroy(): void;
-    togglePlayer(playerid: number, toggle: 0 | 1): void;
+    togglePlayer(playerid: number, toggle: 0 | 1): false | undefined;
     isPlayerIn(playerid: number): any;
     static GetPlayerVisibleDynamicRaceCP(playerid: number): any;
-    static TogglePlayerAllDynamicRaceCPs(playerid: number, toggle: 0 | 1): void;
+    static TogglePlayerAllDynamicRaceCPs(playerid: number, toggle: 0 | 1): false | undefined;
     static IsValidDynamicRaceCP(checkpointid: number): boolean;
 }
