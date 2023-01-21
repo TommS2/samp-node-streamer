@@ -1,3 +1,5 @@
+import { IsPlayerConnected } from "../Util/util";
+
 const STREAMER_RACE_CP_SD = 200.0;
 export class DynamicRaceCheckpoint {
     public static readonly Pool: Array<number> = new Array();
@@ -96,22 +98,30 @@ export class DynamicRaceCheckpoint {
     }
 
     togglePlayer(playerid: number, toggle: 0 | 1) {
+        if (!IsPlayerConnected(playerid))
+            return false;
         samp.callNative("TogglePlayerDynamicRaceCP", "iii", playerid, this._id, toggle);
     }
 
     isPlayerIn(playerid: number) {
+        if (!IsPlayerConnected(playerid))
+            return false;
         let result;
         result = samp.callNative("IsPlayerInDynamicRaceCP", "iiD", playerid, this._id, result);
         return result;
     }
 
     public static GetPlayerVisibleDynamicRaceCP(playerid: number) {
+        if (!IsPlayerConnected(playerid))
+            return false;
         let result;
         result = samp.callNative("GetPlayerVisibleDynamicRaceCP", "iD", playerid, result);
         return result;
     }
 
     public static TogglePlayerAllDynamicRaceCPs(playerid: number, toggle: 0 | 1) {
+        if (!IsPlayerConnected(playerid))
+            return false;
         samp.callNative("TogglePlayerAllDynamicRaceCPs", "ii", playerid, toggle);
     }
 

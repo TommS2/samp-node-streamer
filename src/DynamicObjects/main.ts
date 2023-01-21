@@ -1,3 +1,5 @@
+import { IsPlayerConnected, IsValidVehicle } from "../Util/util";
+
 const STREAMER_OBJECT_SD = 300.0;
 const STREAMER_OBJECT_DD = 0.0;
 export class DynamicObject {
@@ -135,6 +137,9 @@ export class DynamicObject {
     }
 
     attachToCamera(playerid: number) {
+    attachPlayerCameraTo(playerid: number) {
+        if (!IsPlayerConnected(playerid))
+            return false;
         samp.callNative("AttachCameraToDynamicObject", "ii", playerid, this._id);
     }
 
@@ -143,7 +148,10 @@ export class DynamicObject {
     }
 
     attachToPlayer(playerid: number, offsetx: number, offsety: number, offsetz: number, rx: number, ry: number, rz: number) {
+        if (!IsPlayerConnected(playerid))
+            return false;
         samp.callNative("AttachDynamicObjectToPlayer", "iiffffff", this._id, playerid, offsetx, offsety, offsetz, rx, ry, rz);
+        this._playerid = playerid;
     }
 
     attachToVehicle(vehicleid: number, offsetx: number, offsety: number, offsetz: number, rx: number, ry: number, rz: number) {
@@ -151,6 +159,8 @@ export class DynamicObject {
     }
 
     setPlayerToEdit(playerid: number) {
+        if (!IsPlayerConnected(playerid))
+            return false;
         samp.callNative("EditDynamicObject", "ii", playerid, this._id);
     }
 

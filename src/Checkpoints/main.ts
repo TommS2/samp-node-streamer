@@ -1,6 +1,8 @@
+import { IsPlayerConnected } from "../Util/util";
+
 const STREAMER_CP_SD = 200.0;
 export class DynamicCheckpoint {
-    public static readonly Pool : Array<number> = new Array();
+    public static readonly Pool: Array<number> = new Array();
     private _id: number;
     private _x: number;
     private _y: number;
@@ -13,7 +15,7 @@ export class DynamicCheckpoint {
     private _areaid: number;
     private _priority: number;
 
-    constructor(x: number, y: number, z: number, size: number, worldid: number, interiorid: number, playerid: number, streamdistance: number = STREAMER_CP_SD, areaid: number = -1, priority: number = 0 ) {
+    constructor(x: number, y: number, z: number, size: number, worldid: number, interiorid: number, playerid: number, streamdistance: number = STREAMER_CP_SD, areaid: number = -1, priority: number = 0) {
         this._id = samp.callNative("CreateDynamicCP", "ffffiiifii", x, y, z, size, worldid, interiorid, playerid, streamdistance, areaid, priority);
         this._x = x;
         this._y = y;
@@ -28,7 +30,7 @@ export class DynamicCheckpoint {
         DynamicCheckpoint.Pool.push(this._id);
     }
 
-    
+
     public get id() {
         return this._id;
     }
@@ -79,22 +81,30 @@ export class DynamicCheckpoint {
     }
 
     togglePlayer(playerid: number, toggle: 0 | 1) {
+        if (!IsPlayerConnected(playerid))
+            return false;
         samp.callNative("TogglePlayerDynamicCP", "iii", playerid, this._id, toggle);
     }
 
     isPlayerIn(playerid: number) {
+        if (!IsPlayerConnected(playerid))
+            return false;
         let result;
         result = samp.callNative("IsPlayerInDynamicCP", "iiD", playerid, this._id, result);
         return result;
     }
 
     public static GetPlayerVisibleDynamicCP(playerid: number) {
+        if (!IsPlayerConnected(playerid))
+            return false;
         let result;
         result = samp.callNative("GetPlayerVisibleDynamicCP", "iD", playerid, result);
         return result;
     }
 
     public static TogglePlayerAllDynamicCPs(playerid: number, toggle: 0 | 1) {
+        if (!IsPlayerConnected(playerid))
+            return false;
         samp.callNative("TogglePlayerAllDynamicCPs", "ii", playerid, toggle);
     }
 

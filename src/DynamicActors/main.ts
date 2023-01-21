@@ -1,3 +1,5 @@
+import { IsPlayerConnected } from "../Util/util";
+
 export class DynamicActor {
     public static readonly Pool: Array<number> = new Array();
 
@@ -95,6 +97,8 @@ export class DynamicActor {
     }
 
     isStreamedForPlayer(playerid: number) {
+        if (!IsPlayerConnected(playerid))
+            return false;
         let result;
         result = samp.callNative("IsDynamicActorStreamedIn", "iiD", this._id, playerid, result);
         return result;
