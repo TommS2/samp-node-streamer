@@ -3,3 +3,8 @@ export function IsPlayerConnected(playerid: number) {
     return result;
 }
 
+export function IsValidVehicle(vehicleid: number) {
+    let response;
+    response = samp.callNative("IsValidVehicle", "i", vehicleid);
+    return response;
+}

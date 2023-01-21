@@ -18,6 +18,7 @@ export class DynamicObject {
     private _drawdistance: number;
     private _areaid: number;
     private _priority: number;
+    private _vehicleid: number;
 
     public static Pool: Array<number> = new Array();
     constructor(modelid: number, x: number, y: number, z: number, rx: number, ry: number, rz: number, worldid: number = -1, interiorid: number = -1, playerid: number = -1, streamdistance: number = STREAMER_OBJECT_SD, drawdistance: number = STREAMER_OBJECT_DD, areaid: number = -1, priority: number = 0) {
@@ -99,6 +100,10 @@ export class DynamicObject {
         return this._priority;
     }
 
+    public get vehicleid() {
+        return this._vehicleid;
+    }
+
     destroy() {
         samp.callNative("DestroyDynamicObject", "i", this._id);
         DynamicObject.Pool.splice(DynamicObject.Pool.indexOf(this._id), 1);
@@ -136,7 +141,6 @@ export class DynamicObject {
         return result;
     }
 
-    attachToCamera(playerid: number) {
     attachPlayerCameraTo(playerid: number) {
         if (!IsPlayerConnected(playerid))
             return false;
@@ -155,7 +159,10 @@ export class DynamicObject {
     }
 
     attachToVehicle(vehicleid: number, offsetx: number, offsety: number, offsetz: number, rx: number, ry: number, rz: number) {
+        if (!IsValidVehicle(vehicleid))
+            return false;
         samp.callNative("AttachDynamicObjectToVehicle", "iiffffff", this._id, vehicleid, offsetx, offsety, offsetz, rx, ry, rz);
+        this._vehicleid = vehicleid;
     }
 
     setPlayerToEdit(playerid: number) {
