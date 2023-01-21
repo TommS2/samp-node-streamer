@@ -5,6 +5,7 @@
   "main": "index.js",
   "author": "TommS2",
   "license": "ISC",
+  "types": "./lib/index.d.ts",
   "dependencies": {
     "@sa-mp/node": "^0.2.0"
   },
