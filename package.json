@@ -1,6 +1,6 @@
 {
   "name": "samp-node-streamer",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "SAMP-NODE stramer in Typescript.",
   "main": "index.js",
   "author": "TommS2",
